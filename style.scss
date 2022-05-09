@@ -1,0 +1,135 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(88, 88, 88);
+    height: 100%;
+    width: 100%;
+}
+
+p {
+    color: antiquewhite;
+    opacity: 0.5;
+}
+
+.container {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+    align-items: center;
+    position: sticky;
+    margin-top: 10%;
+
+    .text {
+        font-family: 'Times New Roman', Times, serif;
+        background-color: rgb(76, 76, 76);
+        width: 658px;
+        border: none;
+        height: 90px;
+        border-radius: 1px;
+        color: antiquewhite;
+        font-size: 18px;
+    }
+
+    .text:focus {
+        outline: none !important;
+    }
+
+    .keyboard_bg {
+        background-color: rgb(76, 76, 76);
+        width: 658px;
+
+        .keyboard_buttons {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 13px;
+            font-weight: 200;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 4px;
+
+            .row {
+                display: flex;
+                gap: 4px;
+
+                .key {
+                    cursor: pointer;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgb(26, 26, 26);
+                    color: rgb(227, 227, 227);
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 1px;
+                }
+
+                .key:active {
+                    background-color: rgb(111, 255, 0);
+                    color: rgb(26, 26, 26);
+                    border-radius: 1px;
+                }
+
+                .key.active {
+                    background-color: rgb(111, 255, 0);
+                    color: rgb(26, 26, 26);
+                    border-radius: 100px;
+                }
+
+                .key.remove {
+                    animation: key-animation 1s forwards;
+                }
+
+                .backspace {
+                    width: 86px;
+                }
+
+                .tab {
+                    width: 42px;
+                }
+
+                .caps-lock {
+                    width: 75px;
+                }
+
+                .enter {
+                    width: 95px;
+                }
+
+                .shift-left {
+                    width: 86px;
+                }
+
+                .shift-right {
+                    width: 84px;
+                }
+
+                .fivpx {
+                    width: 50px;
+                }
+
+                .space {
+                    width: 275px;
+                }
+            }
+        }
+
+    }
+}
+
+@keyframes key-animation {
+    0% {
+        background-color: rgb(111, 255, 0);
+        color: rgb(26, 26, 26);
+        border-radius: 100px;
+    }
+
+    100% {
+        background-color: rgb(26, 26, 26);
+        color: rgb(227, 227, 227);
+        border-radius: 1px;
+    }
+}
