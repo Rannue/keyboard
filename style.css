@@ -1,0 +1,169 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #585858;
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  color: antiquewhite;
+  opacity: 0.5;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  gap: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  margin-top: 10%;
+}
+
+.container .text {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #4c4c4c;
+  width: 658px;
+  border: none;
+  height: 90px;
+  border-radius: 1px;
+  color: antiquewhite;
+  font-size: 18px;
+}
+
+.container .text:focus {
+  outline: none !important;
+}
+
+.container .keyboard_bg {
+  background-color: #4c4c4c;
+  width: 658px;
+}
+
+.container .keyboard_bg .keyboard_buttons {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 13px;
+  font-weight: 200;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 4px;
+  padding: 4px;
+}
+
+.container .keyboard_bg .keyboard_buttons .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 4px;
+}
+
+.container .keyboard_bg .keyboard_buttons .row .key {
+  cursor: pointer;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #1a1a1a;
+  color: #e3e3e3;
+  width: 40px;
+  height: 40px;
+  border-radius: 1px;
+}
+
+.container .keyboard_bg .keyboard_buttons .row .key:active {
+  background-color: #6fff00;
+  color: #1a1a1a;
+  border-radius: 1px;
+}
+
+.container .keyboard_bg .keyboard_buttons .row .key.active {
+  background-color: #6fff00;
+  color: #1a1a1a;
+  border-radius: 100px;
+}
+
+.container .keyboard_bg .keyboard_buttons .row .key.remove {
+  -webkit-animation: key-animation 1s forwards;
+          animation: key-animation 1s forwards;
+}
+
+.container .keyboard_bg .keyboard_buttons .row .backspace {
+  width: 86px;
+}
+
+.container .keyboard_bg .keyboard_buttons .row .tab {
+  width: 42px;
+}
+
+.container .keyboard_bg .keyboard_buttons .row .caps-lock {
+  width: 75px;
+}
+
+.container .keyboard_bg .keyboard_buttons .row .enter {
+  width: 95px;
+}
+
+.container .keyboard_bg .keyboard_buttons .row .shift-left {
+  width: 86px;
+}
+
+.container .keyboard_bg .keyboard_buttons .row .shift-right {
+  width: 84px;
+}
+
+.container .keyboard_bg .keyboard_buttons .row .fivpx {
+  width: 50px;
+}
+
+.container .keyboard_bg .keyboard_buttons .row .space {
+  width: 275px;
+}
+
+@-webkit-keyframes key-animation {
+  0% {
+    background-color: #6fff00;
+    color: #1a1a1a;
+    border-radius: 100px;
+  }
+  100% {
+    background-color: #1a1a1a;
+    color: #e3e3e3;
+    border-radius: 1px;
+  }
+}
+
+@keyframes key-animation {
+  0% {
+    background-color: #6fff00;
+    color: #1a1a1a;
+    border-radius: 100px;
+  }
+  100% {
+    background-color: #1a1a1a;
+    color: #e3e3e3;
+    border-radius: 1px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
