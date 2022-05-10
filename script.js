@@ -6,6 +6,10 @@ divSecond.classList.add("keyboard_bg");
 let divThird = document.createElement("div");
 divThird.classList.add("keyboard_buttons");
 
+let language = document.createElement("p");
+language.innerText = 'Для переключения языка комбинация: левыe Shift + Alt'
+divFirst.appendChild(language);
+
 let OS = document.createElement("p");
 OS.innerText = 'Клавиатура создана в операционной системе Linux'
 divFirst.appendChild(OS);
@@ -191,8 +195,8 @@ input.addEventListener('keydown', function (e) {
 
 let arrowTop = document.querySelector('.arrow-top')
 let arrowLeft = document.querySelector('.arrow-left')
-let arrowRight = document.querySelector('.arrow-bottom')
-let arrowBottom = document.querySelector('.arrow-right')
+let arrowBottom = document.querySelector('.arrow-bottom')
+let arrowRight = document.querySelector('.arrow-right')
 
 
 input.addEventListener('keydown', function (e) {
@@ -274,6 +278,7 @@ for (let i = 0; i < keys.length; i++) {
 window.addEventListener('keydown', function (e) {
     for (let i = 0; i < keys.length; i++) {
         let attribName = keys[i].getAttribute('keyname')
+        console.log(e.key);
 
         if (e.code == 'Backquote') {
             tilda_key.classList.remove('remove');
@@ -333,6 +338,26 @@ window.addEventListener('keydown', function (e) {
         else if (e.code == 'Space') {
             space.classList.remove('remove');
             space.classList.add('active');
+        }
+
+        else if (e.code == 'ArrowLeft') {
+            arrowLeft.classList.remove('remove');
+            arrowLeft.classList.add('active');
+        }
+
+        else if (e.code == 'ArrowUp') {
+            arrowTop.classList.remove('remove');
+            arrowTop.classList.add('active');
+        }
+
+        else if (e.code == 'ArrowRight') {
+            arrowRight.classList.remove('remove');
+            arrowRight.classList.add('active');
+        }
+
+        else if (e.code == 'ArrowDown') {
+            arrowBottom.classList.remove('remove');
+            arrowBottom.classList.add('active');
         }
 
         else if (e.key.toLowerCase() == attribName.toLowerCase()) {
@@ -409,6 +434,26 @@ window.addEventListener('keyup', function (e) {
             space.classList.add('remove');
         }
 
+        else if (e.code == 'ArrowLeft') {
+            arrowLeft.classList.remove('active');
+            arrowLeft.classList.add('remove');
+        }
+
+        else if (e.code == 'ArrowUp') {
+            arrowTop.classList.remove('active');
+            arrowTop.classList.add('remove');
+        }
+
+        else if (e.code == 'ArrowRight') {
+            arrowRight.classList.remove('active');
+            arrowRight.classList.add('remove');
+        }
+
+        else if (e.code == 'ArrowDown') {
+            arrowBottom.classList.remove('active');
+            arrowBottom.classList.add('remove');
+        }
+
         else if (e.key.toLowerCase() == attribName.toLowerCase()) {
             keys[i].classList.remove('active');
             keys[i].classList.add('remove');
@@ -421,14 +466,82 @@ window.addEventListener('keyup', function (e) {
 window.addEventListener('mousedown', function (e) {
     for (let i = 0; i < keys.length; i++) {
         let attribName = keys[i].getAttribute('keyname')
+        let start = input.selectionStart;
+        let end = input.selectionEnd;
 
-        if (e.target.innerText == keys[i].innerText) {
+        if (e.target.classList.contains('shift-left')) {
+            e.target.classList.remove('remove');
+            e.target.classList.add('active');
+        }
+
+        else if (e.target.classList.contains('shift-right')) {
+            e.target.classList.remove('remove');
+            e.target.classList.add('active');
+        }
+
+        else if (e.target.classList.contains('altLeft')) {
+            e.target.classList.remove('remove');
+            e.target.classList.add('active');
+        }
+
+        else if (e.target.classList.contains('altRight')) {
+            e.target.classList.remove('remove');
+            e.target.classList.add('active');
+        }
+
+        else if (e.target.classList.contains('ctrl-left')) {
+            e.target.classList.remove('remove');
+            e.target.classList.add('active');
+        }
+
+        else if (e.target.classList.contains('ctrl-right')) {
+            e.target.classList.remove('remove');
+            e.target.classList.add('active');
+        }
+
+        else if (e.target.innerText == keys[i].innerText) {
             keys[i].classList.remove('remove');
             keys[i].classList.add('active');
+
+            if (keys[i].innerText == 'Backspace') {
+                let input_first_part = input.value.substring(0, start);
+                let input_last_part = input.value.substring(end, input.value.length);
+                let input_without_last_sumbol = input_first_part.slice(0, -1);
+                input.value = input_without_last_sumbol + input_last_part;
+                input.setSelectionRange(start - 1, end - 1)
+            }
+
+            if (keys[i].innerText == 'Tab') {
+                input.value = input.value.substring(0, start)
+                    + '    '
+                    + input.value.substring(end, input.value.length);
+                input.setSelectionRange(start + 4, end + 4)
+            }
+
+            if (keys[i].innerText == 'DEL') {
+                let input_first_part = input.value.substring(0, start);
+                let input_last_part = input.value.substring(end, input.value.length);
+                let input_without_first_sumbol = input_last_part.slice(1);
+                input.value = input_first_part + input_without_first_sumbol;
+                input.setSelectionRange(start, end)
+            }
+
+            if (keys[i].innerText == '') {
+                input.value = input.value.substring(0, start)
+                    + ' '
+                    + input.value.substring(end, input.value.length);
+                input.setSelectionRange(start + 1, end + 1)
+            }
+
+            if (keys[i].innerText.length == 1) {
+                input.value = input.value.substring(0, start)
+                    + keys[i].innerText
+                    + input.value.substring(end, input.value.length);
+                input.setSelectionRange(start + 1, end + 1)
+            }
         }
+
     }
-
-
 })
 
 window.addEventListener('mouseup', function (e) {
